@@ -30,7 +30,7 @@ Para permitir que o Python converse com o Anki, você precisa instalar o complem
 3. Insira o código numérico: `2055492159` e clique em **OK**.
 4. **Reinicie o Anki** para ativar o complemento.
 
-### 2. Criando o Tipo de Nota Personalizado (Opcional, mas recomendado)
+### 2. Criando o Tipo de Nota Personalizado 
 Para garantir que a verificação de duplicatas funcione perfeitamente sem conflitos com os arquivos de áudio:
 1. No Anki, vá em **Ferramentas** > **Gerenciar Tipos de Nota**.
 2. Clique em **Adicionar** > escolha **Adicionar: Básico** e nomeie como **Inglês Automático**.
@@ -40,8 +40,7 @@ Para garantir que a verificação de duplicatas funcione perfeitamente sem confl
 ### 3. Clonando e Instalando Dependências do Projeto
 1. Clone este repositório ou baixe os arquivos para uma pasta local:
    ```bash
-   git clone https://github.com/SEU-USUARIO/nome-do-repositorio.git
-   cd nome-do-repositorio
+   git clone https://github.com/GabrielFelix-dev/AutamacaoPython-Anki.git
    ```
 2. Instale a biblioteca necessária (`requests`) para gerenciar as requisições HTTP:
    ```bash
