@@ -5,7 +5,7 @@ url = 'http://localhost:8765'
 # 1. Abre o arquivo de texto no modo de leitura ('r' de read) e com suporte a acentos (utf-8)
 with open('palavras.txt', 'r', encoding='utf-8') as arquivo_de_palavras:
     
-    # 2. O Loop: A partir daqui, o código se repete para cada linha do texto
+    # 2. Varredura no arquivo txt
     for linha in arquivo_de_palavras:
         
         # 3. Limpamos a linha e cortamos onde tem a vírgula
@@ -19,27 +19,50 @@ with open('palavras.txt', 'r', encoding='utf-8') as arquivo_de_palavras:
             "version": 6,
             "params": {
                 "note": {
-                    "deckName": "Inglês", 
-                    "modelName": "Básico",
+                    "deckName": "teste2", # <-- INSIRA AQUI O NOME DO BARALHO
+                    "modelName": "Inglês Automático", # <-- CERTIFIQUE-SE DE TER CRIADO A NOTA DE ACORDO COM O README
                     "fields": {
-                        "Frente": frente, # Injeta a palavra em inglês aqui
-                        "Verso": verso    # Injeta a tradução aqui
+                        "Frente": frente, # Injeta a palavra em inglês 
+                        "Verso": verso    # Injeta a tradução 
+                    },
+                    "options": {
+                        "allowDuplicate": False,
+                        "duplicateScope": "deck" # Busca duplicatas apenas no baralho atual
                     },
                     "audio": [{
                         "url": f"https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q={frente}",
                         "filename": f"audio_gerado_{frente}.mp3",
                         "fields": [
-                            "Frente"
+                            "Audio"
                         ]
                     }]
                 }
             }
         }
         
-        # 5. Enviamos para o Anki
-        resposta = requests.post(url, json=pacote)
-        
-        # 6. Imprimimos um aviso visual no terminal para acompanhar o progresso
-        print(f"Palavra '{frente}' enviada! Resposta do Anki: {resposta.json()}")
+                
+        # 5. Tratamento de erros
+        try:
+            # Adicionamos o timeout (em segundos) direto no "carteiro"
+            resposta = requests.post(url, json=pacote, timeout=10)
+            
+            # Extraímos a resposta do Anki
+            resultado = resposta.json()
+            
+            if resultado.get('error') is not None:
+                print(f"Falha na palavra '{frente}': {resultado['error']}")
+            else:
+                print(f"Sucesso! '{frente}' adicionada com áudio.")
 
-print("Automação concluída!")
+        # 6. Exceptions:
+        except requests.exceptions.Timeout:
+            print(f"Demorou muito para processar '{frente}'. Pulando para a próxima...")
+            
+        except requests.exceptions.ConnectionError:
+            print(f"Erro de conexão. O Anki está aberto? A internet caiu? Parando tudo.")
+            break 
+            
+        except Exception as erro_generico:
+            # Captura qualquer outro erro 
+            print(f"Erro inesperado na palavra '{frente}': {erro_generico}")
+
