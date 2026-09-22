@@ -1,0 +1,3 @@
+book,livro
+car,carro
+water,água
