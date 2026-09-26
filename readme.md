@@ -23,7 +23,7 @@ Para permitir que o app converse com o seu Anki, instale a API local:
 3. Insira o código: `2055492159` (AnkiConnect) e clique em **OK**.
 4. **Reinicie o Anki**.
 
-### 2. Criando o Tipo de Nota (Recomendado)
+### 2. Criando o Tipo de Nota 
 Para evitar conflitos na verificação de cartões duplicados quando o áudio for gerado:
 1. No Anki, vá em **Ferramentas** > **Gerenciar Tipos de Nota**.
 2. Adicione um novo tipo Baseado no "Básico" e nomeie como **Inglês Automático**.
