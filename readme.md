@@ -33,8 +33,8 @@ Para evitar conflitos na verificação de cartões duplicados quando o áudio fo
 ### 3. Instalação do Projeto
 Clone o repositório e instale as bibliotecas necessárias para o Web App rodar:
 ```bash
-git clone https://github.com/SEU-USUARIO/nome-do-repositorio.git
-cd nome-do-repositorio
+git clone https://github.com/GabrielFelix-dev/AutamacaoPython-Anki.git
+cd AutomacaoPython-Anki
 
 # Instalação das dependências
 pip install streamlit requests
@@ -51,13 +51,13 @@ pip install streamlit requests
    ```
 3. Abra o terminal na pasta do projeto e inicie o servidor do Web App:
    ```bash
-   streamlit run app.py
+   streamlit run automacao_anki.py
    ```
 4. O seu navegador abrirá automaticamente em `http://localhost:8501`.
 5. Digite o nome do baralho, faça o upload do seu arquivo de texto e clique em **Iniciar Automação**!
 
 ## 📂 Estrutura do Projeto
-* `app.py` — Código fonte contendo o Backend (integração com Anki) e o Frontend (Streamlit).
+* `automacao_anki.py` — Código fonte contendo o Backend (integração com Anki) e o Frontend (Streamlit).
 * `palavras.txt` — Arquivo de exemplo para upload.
 * `README.md` — Documentação do projeto.
 
